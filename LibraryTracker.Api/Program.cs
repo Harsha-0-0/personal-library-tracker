@@ -38,6 +38,8 @@ builder.Services.AddSwaggerGen(options =>
 
 // JWT Auth
 var jwtKey = builder.Configuration["Jwt:Key"]!;
+if (jwtKey.StartsWith("REPLACE_WITH"))
+    throw new InvalidOperationException("Set a real Jwt:Key (user-secrets or environment variable).");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
