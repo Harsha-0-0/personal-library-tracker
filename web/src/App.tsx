@@ -4,6 +4,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
 import BookListPage from "./pages/BookListPage";
 import BookDetailPage from "./pages/BookDetailPage";
+import RegisterPage from "./pages/RegisterPage";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/books" element={<BookListPage />} />
             <Route path="/books/:id" element={<BookDetailPage />} />
+            <Route path="/register" element={<RegisterPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
