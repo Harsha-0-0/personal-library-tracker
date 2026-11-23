@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getBooks, createBook } from "../api/books";
+import { useAuth } from "../context/AuthContext";
 import type { Book } from "../api/books";
 
 export default function BookListPage() {
@@ -8,6 +9,7 @@ export default function BookListPage() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [genre, setGenre] = useState("");
+  const { email, logout } = useAuth(); //destructuring
 
   const loadBooks = () => getBooks().then(setBooks);
 
@@ -26,7 +28,18 @@ export default function BookListPage() {
 
   return (
     <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-2xl font-bold mb-4">My Library</h1>
+      <div className="flex justify-between items-center mb-4">
+        <h1 className="text-2xl font-bold">My Library</h1>
+        <div className="flex items-center gap-3">
+          <span className="text-sm text-slate-500">{email}</span>
+          <button
+            onClick={logout}
+            className="text-sm border rounded px-3 py-1 hover:bg-slate-100"
+          >
+            Log out
+          </button>
+        </div>
+      </div>
       <form onSubmit={handleAddBook} className="bg-white p-4 rounded-lg shadow-sm mb-6 space-y-2">
         <input
           className="w-full border rounded p-2"
