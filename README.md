@@ -10,7 +10,6 @@ A full-stack app for keeping track of your books: what you want to read, what yo
 | Database | SQLite with Entity Framework Core (code-first migrations) |
 | Authentication | JWT tokens, passwords hashed with BCrypt |
 | Front end | React, TypeScript, Vite, Tailwind CSS |
-| Tests | xUnit, with an in-memory SQLite database |
 
 ## Features
 
@@ -70,16 +69,9 @@ sqlite3 LibraryTracker.Api/librarytracker.db "UPDATE Users SET Role = 'Admin' WH
 
 Log out and back in to get a token with the new role.
 
-## Running the tests
-
-```bash
-dotnet test LibraryTracker.Tests
-```
-
-The tests cover token creation, registration (role and password hashing), login with right and wrong passwords, and the main book endpoints. Each test gets its own fresh in-memory database.
-
 ## Next steps
 
+- Unit tests with xUnit for authentication, tokens and the book endpoints
 - An AI reading assistant that uses Claude tool use to look up and summarise your library
 - Request DTOs and validation for books, such as a rating between 1 and 5
 - A service layer between the controllers and the database, so business logic is easier to test
