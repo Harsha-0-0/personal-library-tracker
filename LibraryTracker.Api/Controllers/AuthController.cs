@@ -30,7 +30,7 @@ public class AuthController : ControllerBase
         {
             Email = req.Email,
             PasswordHash = BCrypt.Net.BCrypt.HashPassword(req.Password),
-            Role = string.IsNullOrWhiteSpace(req.Role) ? "User" : req.Role
+            Role = "User"
         };
         _db.Users.Add(user);
         await _db.SaveChangesAsync();
